@@ -1,0 +1,92 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, c;
+    cout << "Nhap 3 so a, b, c: ";
+    cin >> a >> b >> c;
+
+    int temp; // biến phụ
+
+    // Đảm bảo a <= b
+    if (a > b) {
+        temp = a;
+        a = b;
+        b = temp;
+    }
+
+    // Đảm bảo a <= c
+    if (a > c) {
+        temp = a;
+        a = c;
+        c = temp;
+    }
+
+    // Đảm bảo b <= c
+    if (b > c) {
+        temp = b;
+        b = c;
+        c = temp;
+    }
+
+    cout << "Thu tu tang dan: " << a << " " << b << " " << c << endl;
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <conio.h>
+
+int main() {
+    int n;
+    printf("Nhap so nguyen co 3 chu so: ");
+    scanf("%d", &n);
+
+    int tram = n / 100;        // hàng trăm
+    int chuc = (n / 10) % 10;  // hàng chục
+    int donvi = n % 10;        // hàng đơn vị
+
+    int maxDigit = tram;
+    char pos[20] = "hang tram";
+
+    if (chuc > maxDigit) {
+        maxDigit = chuc;
+        sprintf(pos, "hang chuc");
+    }
+    if (donvi > maxDigit) {
+        maxDigit = donvi;
+        sprintf(pos, "hang don vi");
+    }
+
+    printf("Chu so lon nhat la %d nam o %s.\n", maxDigit, pos);
+
+    getch(); // dừng màn hình
+    return 0;
+}
+
+
+
+#include <stdio.h>
+#include <conio.h>
+
+int main() {
+    int n;
+    printf("Nhap so nguyen co 3 chu so: ");
+    scanf("%d", &n);
+
+    int a = n / 100;        // hàng trăm
+    int b = (n / 10) % 10;  // hàng chục
+    int c = n % 10;         // hàng đơn vị
+
+    int temp; // biến phụ để hoán đổi
+
+    // Sắp xếp a, b, c tăng dần
+    if (a > b) { temp = a; a = b; b = temp; }
+    if (a > c) { temp = a; a = c; c = temp; }
+    if (b > c) { temp = b; b = c; c = temp; }
+
+    printf("Thu tu tang dan cua cac chu so: %d%d%d\n", a, b, c);
+
+    getch(); // dừng màn hình
+    return 0;
+}
