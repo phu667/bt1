@@ -1,0 +1,18 @@
+int a=7, b=8;
+a++;
+a=a+(b--);
+--b;
+a--;
+a=(--a)+(--b);
+if(a%2!=0)
+ printf("\n a la so le");
+else
+ printf("\n a la so chan");
+printf("\na = %d",a);
+
+int x=5, y;
+y=x++ + 5;
+printf(“x=%d, y=%d\n”, x, y);
+y*=6;
+x=y%7;
+printf(“x=%d,y=%d,y/x=%d”, x, y, y/x);
