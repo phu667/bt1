@@ -1,18 +1,11 @@
-int a=7, b=8;
-a++;
-a=a+(b--);
---b;
-a--;
-a=(--a)+(--b);
-if(a%2!=0)
- printf("\n a la so le");
-else
- printf("\n a la so chan");
-printf("\na = %d",a);
+#include <iostream>
+using namespace std;
 
-int x=5, y;
-y=x++ + 5;
-printf(“x=%d, y=%d\n”, x, y);
-y*=6;
-x=y%7;
-printf(“x=%d,y=%d,y/x=%d”, x, y, y/x);
+int main() {
+    int a, b;
+    cout << "Nhap hai so nguyen a va b: ";
+    cin >> a >> b;
+    int max_val = (a > b) ? a : b;
+    cout << "Gia tri lon nhat la: " << max_val << endl;
+    return 0;
+}
