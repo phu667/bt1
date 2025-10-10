@@ -1,0 +1,156 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+
+#define PI 3.14159265359
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n===== MENU CHUONG TRINH =====\n");
+        printf("1. Kiem tra nam nhuan\n");
+        printf("2. Kiem tra tam giac va loai tam giac\n");
+        printf("3. Kiem tra so chinh phuong\n");
+        printf("4. Tinh chu vi, dien tich cac hinh\n");
+        printf("5. Tinh tien cuoc TAXI\n");
+        printf("0. Thoat\n");
+        printf("Chon chuc nang: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: { // Năm nhuận
+                int y;
+                printf("Nhap nam: ");
+                scanf("%d", &y);
+                if ((y % 400 == 0) || (y % 4 == 0 && y % 100 != 0))
+                    printf("Nam %d la NAM NHUAN.\n", y);
+                else
+                    printf("Nam %d KHONG phai NAM NHUAN.\n", y);
+                break;
+            }
+
+            case 2: { // Tam giác
+                int a, b, c;
+                printf("Nhap 3 so nguyen duong: ");
+                scanf("%d%d%d", &a, &b, &c);
+                if (a + b > c && a + c > b && b + c > a) {
+                    printf("3 so lap thanh TAM GIAC.\n");
+                    if (a == b && b == c)
+                        printf("Day la TAM GIAC DEU.\n");
+                    else if (a == b || b == c || a == c) {
+                        if (a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a)
+                            printf("Day la TAM GIAC VUONG CAN.\n");
+                        else
+                            printf("Day la TAM GIAC CAN.\n");
+                    } else if (a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a)
+                        printf("Day la TAM GIAC VUONG.\n");
+                    else
+                        printf("Day la TAM GIAC THUONG.\n");
+                } else {
+                    printf("KHONG LAP THANH TAM GIAC.\n");
+                }
+                break;
+            }
+
+            case 3: { // Số chính phương
+                int n;
+                printf("Nhap so nguyen duong n: ");
+                scanf("%d", &n);
+                if (n <= 0) printf("n phai la so duong!\n");
+                else {
+                    int x = (int)sqrt(n);
+                    if (x * x == n)
+                        printf("%d la SO CHINH PHUONG.\n", n);
+                    else
+                        printf("%d KHONG phai SO CHINH PHUONG.\n", n);
+                }
+                break;
+            }
+
+            case 4: { // Chu vi, diện tích
+                int hinh;
+                printf("\n--- CHON HINH ---\n");
+                printf("1. Tam giac\n");
+                printf("2. Hinh vuong\n");
+                printf("3. Hinh chu nhat\n");
+                printf("4. Hinh tron\n");
+                printf("Chon: ");
+                scanf("%d", &hinh);
+                switch (hinh) {
+                    case 1: {
+                        float a, b, c;
+                        printf("Nhap 3 canh tam giac: ");
+                        scanf("%f%f%f", &a, &b, &c);
+                        if (a + b > c && a + c > b && b + c > a) {
+                            float P = a + b + c;
+                            float p = P / 2;
+                            float S = sqrt(p * (p - a) * (p - b) * (p - c));
+                            printf("Chu vi = %.2f\n", P);
+                            printf("Dien tich = %.2f\n", S);
+                        } else printf("3 canh khong tao thanh tam giac!\n");
+                        break;
+                    }
+                    case 2: {
+                        float a;
+                        printf("Nhap canh hinh vuong: ");
+                        scanf("%f", &a);
+                        printf("Chu vi = %.2f\n", 4*a);
+                        printf("Dien tich = %.2f\n", a*a);
+                        break;
+                    }
+                    case 3: {
+                        float d, r;
+                        printf("Nhap chieu dai va rong: ");
+                        scanf("%f%f", &d, &r);
+                        printf("Chu vi = %.2f\n", 2*(d+r));
+                        printf("Dien tich = %.2f\n", d*r);
+                        break;
+                    }
+                    case 4: {
+                        float r;
+                        printf("Nhap ban kinh: ");
+                        scanf("%f", &r);
+                        printf("Chu vi = %.2f\n", 2*PI*r);
+                        printf("Dien tich = %.2f\n", PI*r*r);
+                        break;
+                    }
+                    default: printf("Lua chon khong hop le!\n");
+                }
+                break;
+            }
+
+            case 5: { // Taxi
+                float km;
+                long tien = 0;
+                printf("Nhap so km da di: ");
+                scanf("%f", &km);
+
+                if (km <= 0)
+                    printf("So km khong hop le!\n");
+                else if (km <= 1.0)
+                    tien = 5000;
+                else if (km <= 1.2)
+                    tien = 5000 + 1000;
+                else if (km <= 30)
+                    tien = 5000 + 1000 + (long)((km - 1.2) * 5000);
+                else
+                    tien = 5000 + 1000 + (long)((30 - 1.2) * 5000) + (long)((km - 30) * 3000);
+
+                printf("So tien phai tra: %ld VND\n", tien);
+                break;
+            }
+
+            case 0:
+                printf("Thoat chuong trinh.\n");
+                break;
+
+            default:
+                printf("Lua chon khong hop le!\n");
+        }
+
+    } while (choice != 0);
+
+    getch();
+    return 0;
+}
