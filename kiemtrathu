@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+void tinhgiatien(){
+	int d,t;
+	cout << "nhap so dia DVD: ";
+	cin >> d;
+	if (d <= 10){
+		t = d * 5000;
+	}
+	else{
+		t = d * 5000 - (d * 5000 * 1 / 10);
+	}
+	cout << "tong tien dia DVD phai tra :" << t << " " << endl;
+}
+
+void tinhtohop(){
+	int n, k;
+	long long tohop, temp1 = 1, temp2 = 1, temp3 = 1;
+	cout << "nhap n: ";
+		cin >> n;
+	cout << "nhap k: ";
+		cin >> k;
+		if (k <= n){
+			for (int i = 1; i <= n; i++){
+				temp1 *= i;
+			}
+			for (int i = 1; i <= k; i++){
+				temp2 *= i;
+			}
+			for (int i = 1; i <= (n - k); i++){
+				temp3 *= i;
+			}
+			tohop = temp1 / (temp2*temp3);
+			cout << "to hop chap " << k << " cua " << n << " la :" << tohop << " " << endl;
+		}
+		else
+			cout << "khong hop le" << endl;
+
+}
+
+void tinhtich(){
+	int n;
+	long long tich = 1;
+	cout << "nhap so nguyen duong: ";
+	cin >> n;
+	if (n % 2 == 0){
+		for (int i = 2; i <= n; i += 2)
+			tich *= i;
+	}
+	else {
+		for (int i = 1; i <= n; i += 2)
+			tich *= i;
+	}
+	cout << "S = " << tich << " " <<endl;
+}
+
+int main(){
+	tinhgiatien();
+	tinhtohop();
+	tinhtich();
+	system("pause");
+}
